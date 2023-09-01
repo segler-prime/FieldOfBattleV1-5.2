@@ -23,19 +23,19 @@ void ALobbyGameModeBase::StartGame(FString Map)
     UWorld* World = GetWorld();
     bUseSeamlessTravel = true;
     
-    if (Map == "Stoney Bowl")
-    {
-        World->ServerTravel(TEXT("/Game/Maps/TestMap5?listen"), true);
-    }
-    
-    if (Map == "Scorched Ridge")
-    {
-        World->ServerTravel(TEXT("/Game/Maps/BattleRidgeMap?listen"), true);
-    }
-
-    if (Map == "Grassy Flatland")
+    if (Map == "Grassy Meadow")
     {
         World->ServerTravel(TEXT("/Game/Maps/BattleFlatlandMap?listen"), true);
+    }
+    
+    if (Map == "Scorched Canyon")
+    {
+        World->ServerTravel(TEXT("/Game/Maps/BattleCanyonMap?listen"), true);
+    }
+
+    if (Map == "Stoney Bowl")
+    {
+        World->ServerTravel(TEXT("/Game/Maps/BattleBowlMap?listen"), true);
     }
 
 }
