@@ -25,18 +25,23 @@ void ALobbyGameModeBase::StartGame(FString Map)
     
     if (Map == "Grassy Meadow")
     {
-        World->ServerTravel(TEXT("/Game/Maps/BattleFlatlandMap?listen"), true);
+        World->ServerTravel(TEXT("/Game/Maps/BattleMeadowMap?listen"), true);
     }
     
-    if (Map == "Scorched Canyon")
+    if (Map == "Dirt Ditch")
+    {
+        World->ServerTravel(TEXT("/Game/Maps/BattleDitchMap?listen"), true);
+    }    
+    
+    if (Map == "Stoney Ridge")
+    {
+        World->ServerTravel(TEXT("/Game/Maps/BattleRidgeMap?listen"), true);
+    }
+ 
+    if (Map == "Sandy Canyon")
     {
         World->ServerTravel(TEXT("/Game/Maps/BattleCanyonMap?listen"), true);
     }
-
-    if (Map == "Stoney Bowl")
-    {
-        World->ServerTravel(TEXT("/Game/Maps/BattleBowlMap?listen"), true);
-    }
-
+    
 }
 
