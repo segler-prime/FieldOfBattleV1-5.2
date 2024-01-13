@@ -17,41 +17,53 @@ struct FIELDOFBATTLE_API FWarbandUnitInfoStruct
 	FString UnitName;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString MoveStat;
+	FString Move;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString FightStat;
+	FString ShootAttacks;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FString ShootRange;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ShootStat;
+	FString ShootSkill;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString AttacksStat;
+	FString ShootStrength;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FString FightAttacks;
+		
+	UPROPERTY(BlueprintReadWrite)
+	FString FightSkill;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ToughnessStat;
+	FString FightStrength;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString WoundsStat;
+	FString Toughness;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString StrengthStat;
+	FString ArmorSave;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString BraveryStat;
+	FString Wounds;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString InitiativeStat;
+	FString Bravery;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString UnitStrengthStat;
+	FString Initiative;
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 BaseCostStat = 0;
+	FString UnitStrength;
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitSpacingStat = 0;
+	int32 BaseCost = 0;
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitWidthStat = 0;
+	int32 UnitSpacing = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 UnitWidth = 0;
 };

@@ -31,23 +31,23 @@ protected:
 	TArray<FArmyHeaderInfoStruct> GetArmyHeaders();
 
 	UFUNCTION(BlueprintCallable)
-	TArray<FArmyUnitInfoStruct> GetArmyUnits(FString InArmyID);
+	TArray<FArmyUnitInfoStruct> GetArmyUnits(int32 InArmyID);
 
 	// Save Functions
 
 	UFUNCTION(BlueprintCallable)
-	int SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo);
+	int32 SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo);
 
 	UFUNCTION(BlueprintCallable)
-	void SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, FString NewArmyID);
+	void SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, int32 NewArmyID);
 
 	//Delete Functions
 	
 	UFUNCTION(BlueprintCallable)
-	void DeleteArmy(FString ArmyID);
+	void DeleteArmy(int32 ArmyID);
 
 	UFUNCTION(BlueprintCallable)
-	void DeleteArmyUnits(FString ArmyID);
+	void DeleteArmyUnits(int32 ArmyID);
 
 private:
 

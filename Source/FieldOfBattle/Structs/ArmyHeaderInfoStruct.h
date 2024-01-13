@@ -26,7 +26,7 @@ struct FIELDOFBATTLE_API FArmyHeaderInfoStruct
 	FString ArmyDescription;	
 	
 	UPROPERTY(BlueprintReadWrite)
-	FString ArmyPoints;
+	int32 ArmyPoints = 0;
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 PlayerID = 0;

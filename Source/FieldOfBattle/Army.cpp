@@ -22,19 +22,23 @@ TArray<FWarbandUnitInfoStruct> UArmy::GetWarbandUnits(FString InWarband)
     while (WarbandUnitTable->Step() == ESQLitePreparedStatementStepResult::Row)
     {
         WarbandUnitTable->GetColumnValueByName(TEXT("UnitName"), WarbandUnitInfo.UnitName);
-        WarbandUnitTable->GetColumnValueByName(TEXT("MoveStat"), WarbandUnitInfo.MoveStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("FightStat"), WarbandUnitInfo.FightStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("ShootStat"), WarbandUnitInfo.ShootStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("AttacksStat"), WarbandUnitInfo.AttacksStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("ToughnessStat"), WarbandUnitInfo.ToughnessStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("WoundsStat"), WarbandUnitInfo.WoundsStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("StrengthStat"), WarbandUnitInfo.StrengthStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("BraveryStat"), WarbandUnitInfo.BraveryStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("InitiativeStat"), WarbandUnitInfo.InitiativeStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("UnitStrengthStat"), WarbandUnitInfo.UnitStrengthStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("BaseCostStat"), WarbandUnitInfo.BaseCostStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("UnitSpacingStat"), WarbandUnitInfo.UnitSpacingStat);
-        WarbandUnitTable->GetColumnValueByName(TEXT("UnitWidthStat"), WarbandUnitInfo.UnitWidthStat);
+        WarbandUnitTable->GetColumnValueByName(TEXT("Move"), WarbandUnitInfo.Move);
+        WarbandUnitTable->GetColumnValueByName(TEXT("ShootAttacks"), WarbandUnitInfo.ShootAttacks);
+        WarbandUnitTable->GetColumnValueByName(TEXT("ShootRange"), WarbandUnitInfo.ShootRange);
+        WarbandUnitTable->GetColumnValueByName(TEXT("ShootSkill"), WarbandUnitInfo.ShootSkill);
+        WarbandUnitTable->GetColumnValueByName(TEXT("ShootStrength"), WarbandUnitInfo.ShootStrength);
+        WarbandUnitTable->GetColumnValueByName(TEXT("FightAttacks"), WarbandUnitInfo.FightAttacks);
+        WarbandUnitTable->GetColumnValueByName(TEXT("FightSkill"), WarbandUnitInfo.FightSkill);
+        WarbandUnitTable->GetColumnValueByName(TEXT("FightStrength"), WarbandUnitInfo.FightStrength);
+        WarbandUnitTable->GetColumnValueByName(TEXT("Toughness"), WarbandUnitInfo.Toughness);
+        WarbandUnitTable->GetColumnValueByName(TEXT("ArmorSave"), WarbandUnitInfo.ArmorSave);
+        WarbandUnitTable->GetColumnValueByName(TEXT("Wounds"), WarbandUnitInfo.Wounds);
+        WarbandUnitTable->GetColumnValueByName(TEXT("Bravery"), WarbandUnitInfo.Bravery);
+        WarbandUnitTable->GetColumnValueByName(TEXT("Initiative"), WarbandUnitInfo.Initiative);
+        WarbandUnitTable->GetColumnValueByName(TEXT("UnitStrength"), WarbandUnitInfo.UnitStrength);
+        WarbandUnitTable->GetColumnValueByName(TEXT("BaseCost"), WarbandUnitInfo.BaseCost);
+        WarbandUnitTable->GetColumnValueByName(TEXT("UnitSpacing"), WarbandUnitInfo.UnitSpacing);
+        WarbandUnitTable->GetColumnValueByName(TEXT("UnitWidth"), WarbandUnitInfo.UnitWidth);
         WarbandUnitInfoArray.Add(WarbandUnitInfo);
     }
 
@@ -82,7 +86,7 @@ TArray<FArmyHeaderInfoStruct> UArmy::GetArmyHeaders()
     return ArmyHeaderInfoArray;
 }
 
-TArray<FArmyUnitInfoStruct> UArmy::GetArmyUnits(FString InArmyID)
+TArray<FArmyUnitInfoStruct> UArmy::GetArmyUnits(int32 InArmyID)
 {
     //Open Database
     FoBDB = new FSQLiteDatabase();
@@ -90,7 +94,7 @@ TArray<FArmyUnitInfoStruct> UArmy::GetArmyUnits(FString InArmyID)
 
     //Build SQL Statement
     ArmyUnitsTable = new FSQLitePreparedStatement();
-    FString GetArmyUnitsSQL = FString::Printf(TEXT("SELECT * FROM ArmyUnit WHERE ArmyId IS '%s'"), *InArmyID);
+    FString GetArmyUnitsSQL = FString::Printf(TEXT("SELECT * FROM ArmyUnitInfo WHERE ArmyId IS '%d'"), InArmyID);
     ArmyUnitsTable->Create(*FoBDB, *GetArmyUnitsSQL, ESQLitePreparedStatementFlags::Persistent);
 
     TArray<FArmyUnitInfoStruct> ArmyUnitInfoArray;
@@ -101,21 +105,25 @@ TArray<FArmyUnitInfoStruct> UArmy::GetArmyUnits(FString InArmyID)
     {
         ArmyUnitsTable->GetColumnValueByName(TEXT("UnitId"), ArmyUnitInfo.UnitId);
         ArmyUnitsTable->GetColumnValueByName(TEXT("UnitName"), ArmyUnitInfo.UnitName);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("MoveStat"), ArmyUnitInfo.MoveStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("FightStat"), ArmyUnitInfo.FightStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("ShootStat"), ArmyUnitInfo.ShootStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("AttacksStat"), ArmyUnitInfo.AttacksStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("ToughnessStat"), ArmyUnitInfo.ToughnessStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("WoundsStat"), ArmyUnitInfo.WoundsStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("StrengthStat"), ArmyUnitInfo.StrengthStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("BraveryStat"), ArmyUnitInfo.BraveryStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("InitiativeStat"), ArmyUnitInfo.InitiativeStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitStrengthStat"), ArmyUnitInfo.UnitStrengthStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("BaseCostStat"), ArmyUnitInfo.BaseCostStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitSpacingStat"), ArmyUnitInfo.UnitSpacingStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitWidthStat"), ArmyUnitInfo.UnitWidthStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitSizeStat"), ArmyUnitInfo.UnitSizeStat);
-        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitDamageStat"), ArmyUnitInfo.UnitDamageStat);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("Move"), ArmyUnitInfo.Move);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("ShootAttacks"), ArmyUnitInfo.ShootAttacks);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("ShootRange"), ArmyUnitInfo.ShootRange);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("ShootSkill"), ArmyUnitInfo.ShootSkill);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("ShootStrength"), ArmyUnitInfo.ShootStrength);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("FightAttacks"), ArmyUnitInfo.FightAttacks);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("FightSkill"), ArmyUnitInfo.FightSkill);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("FightStrength"), ArmyUnitInfo.FightStrength);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("Toughness"), ArmyUnitInfo.Toughness);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("ArmorSave"), ArmyUnitInfo.ArmorSave);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("Wounds"), ArmyUnitInfo.Wounds);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("Bravery"), ArmyUnitInfo.Bravery);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("Initiative"), ArmyUnitInfo.Initiative);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitStrength"), ArmyUnitInfo.UnitStrength);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("BaseCost"), ArmyUnitInfo.BaseCost);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitSpacing"), ArmyUnitInfo.UnitSpacing);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitWidth"), ArmyUnitInfo.UnitWidth);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitSize"), ArmyUnitInfo.UnitSize);
+        ArmyUnitsTable->GetColumnValueByName(TEXT("UnitDamage"), ArmyUnitInfo.UnitDamage);
         ArmyUnitsTable->GetColumnValueByName(TEXT("UnitTeam"), ArmyUnitInfo.UnitTeam);
         ArmyUnitsTable->GetColumnValueByName(TEXT("UnitOwner"), ArmyUnitInfo.UnitOwner);
         ArmyUnitInfoArray.Add(ArmyUnitInfo);
@@ -130,7 +138,7 @@ TArray<FArmyUnitInfoStruct> UArmy::GetArmyUnits(FString InArmyID)
     return ArmyUnitInfoArray;
 }
 
-int UArmy::SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo)
+int32 UArmy::SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo)
 {
     //UE_LOG(LogTemp, Warning, TEXT("UArmy::SaveArmyHeader - Starting"));
         
@@ -140,12 +148,12 @@ int UArmy::SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo)
 
     //Insert New Army Header Info
     InsertInArmyHeaderTable = new FSQLitePreparedStatement();
-    FString InsertArmyHeaderSQL = FString::Printf(TEXT("INSERT INTO ArmyHeader (ArmyWarband, ArmyName, ArmyDescription, ArmyPoints, PlayerId) VALUES ('%s', '%s', 'A great army', '%s', 0001);"), *NewArmyHeaderInfo.ArmyWarband, *NewArmyHeaderInfo.ArmyName, *NewArmyHeaderInfo.ArmyPoints);
+    FString InsertArmyHeaderSQL = FString::Printf(TEXT("INSERT INTO ArmyHeader (ArmyWarband, ArmyName, ArmyDescription, ArmyPoints, PlayerId) VALUES ('%s', '%s', 'A great army', '%d', 0001);"), *NewArmyHeaderInfo.ArmyWarband, *NewArmyHeaderInfo.ArmyName, NewArmyHeaderInfo.ArmyPoints);
     InsertInArmyHeaderTable->Create(*FoBDB, *InsertArmyHeaderSQL, ESQLitePreparedStatementFlags::Persistent);
     InsertInArmyHeaderTable->Execute();
 
     //Get the Army Id Info
-    int ArmyId = FoBDB->GetLastInsertRowId();
+    int32 ArmyId = FoBDB->GetLastInsertRowId();
 
     //Clean Up
     InsertInArmyHeaderTable->Destroy();
@@ -156,7 +164,7 @@ int UArmy::SaveArmyHeader(FArmyHeaderInfoStruct NewArmyHeaderInfo)
     return ArmyId;
 }
 
-void UArmy::SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, FString NewArmyID)
+void UArmy::SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, int32 NewArmyID)
 {
     
     //UE_LOG(LogTemp, Warning, TEXT("UArmy::SaveArmyUnits - Starting"));
@@ -168,8 +176,8 @@ void UArmy::SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, FString NewArmyID
     //Build SQL Statement
     InsertInArmyUnitTable = new FSQLitePreparedStatement();
     FString InsertArmyUnitSQL = FString::Printf(TEXT
-    ("INSERT INTO ArmyUnit (UnitName, MoveStat, FightStat, ShootStat, AttacksStat, ToughnessStat, WoundsStat, StrengthStat, BraveryStat, InitiativeStat, UnitStrengthStat, BaseCostStat, UnitSpacingStat, UnitWidthStat, UnitSizeStat, UnitDamageStat, UnitTeam, UnitOwner, ArmyId, PlayerId) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%s', 0001);"),
-        *NewArmyUnitInfo.UnitName, *NewArmyUnitInfo.MoveStat, *NewArmyUnitInfo.FightStat, *NewArmyUnitInfo.ShootStat, *NewArmyUnitInfo.AttacksStat, *NewArmyUnitInfo.ToughnessStat, *NewArmyUnitInfo.WoundsStat, *NewArmyUnitInfo.StrengthStat, *NewArmyUnitInfo.BraveryStat, *NewArmyUnitInfo.InitiativeStat, *NewArmyUnitInfo.UnitStrengthStat, NewArmyUnitInfo.BaseCostStat, NewArmyUnitInfo.UnitSpacingStat, NewArmyUnitInfo.UnitWidthStat, NewArmyUnitInfo.UnitSizeStat, NewArmyUnitInfo.UnitDamageStat, NewArmyUnitInfo.UnitTeam, *NewArmyUnitInfo.UnitOwner, *NewArmyID);
+    ("INSERT INTO ArmyUnitInfo (UnitName, Move, ShootAttacks, ShootRange, ShootSkill, ShootStrength, FightAttacks, FightSkill, FightStrength, Toughness, ArmorSave, Wounds, Bravery, Initiative, UnitStrength, BaseCost, UnitSpacing, UnitWidth, UnitSize, UnitDamage, UnitTeam, UnitOwner, ArmyId, PlayerId) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d', '%d', '%d', '%d', '%s', '%d', 0001);"),
+        *NewArmyUnitInfo.UnitName, *NewArmyUnitInfo.Move, *NewArmyUnitInfo.ShootAttacks, *NewArmyUnitInfo.ShootRange, *NewArmyUnitInfo.ShootSkill, *NewArmyUnitInfo.ShootStrength, *NewArmyUnitInfo.FightAttacks, *NewArmyUnitInfo.FightSkill, *NewArmyUnitInfo.FightStrength, *NewArmyUnitInfo.Toughness, *NewArmyUnitInfo.ArmorSave, *NewArmyUnitInfo.Wounds, *NewArmyUnitInfo.Bravery, *NewArmyUnitInfo.Initiative, *NewArmyUnitInfo.UnitStrength, NewArmyUnitInfo.BaseCost, NewArmyUnitInfo.UnitSpacing, NewArmyUnitInfo.UnitWidth, NewArmyUnitInfo.UnitSize, NewArmyUnitInfo.UnitDamage, NewArmyUnitInfo.UnitTeam, *NewArmyUnitInfo.UnitOwner, NewArmyID);
      
     InsertInArmyUnitTable->Create(*FoBDB, *InsertArmyUnitSQL, ESQLitePreparedStatementFlags::Persistent);
 
@@ -183,7 +191,7 @@ void UArmy::SaveArmyUnits(FArmyUnitInfoStruct NewArmyUnitInfo, FString NewArmyID
     delete FoBDB;
 }
 
-void UArmy::DeleteArmy(FString ArmyID)
+void UArmy::DeleteArmy(int32 ArmyID)
 {
     //Open Database
     FoBDB = new FSQLiteDatabase();
@@ -191,7 +199,7 @@ void UArmy::DeleteArmy(FString ArmyID)
 
     //Build SQL Statements
     DeleteArmyHeaderStmt = new FSQLitePreparedStatement();
-    FString DeleteArmyHeaderSQL = FString::Printf(TEXT("DELETE FROM ArmyHeader WHERE ArmyId=%s"), *ArmyID);
+    FString DeleteArmyHeaderSQL = FString::Printf(TEXT("DELETE FROM ArmyHeader WHERE ArmyId=%d"), ArmyID);
     DeleteArmyHeaderStmt->Create(*FoBDB, *DeleteArmyHeaderSQL, ESQLitePreparedStatementFlags::Persistent);
 
     //Delete the Army
@@ -206,7 +214,7 @@ void UArmy::DeleteArmy(FString ArmyID)
     DeleteArmyUnits(ArmyID);
 }
 
-void UArmy::DeleteArmyUnits(FString ArmyID)
+void UArmy::DeleteArmyUnits(int32 ArmyID)
 {
     //Open Database
     FoBDB = new FSQLiteDatabase();
@@ -214,7 +222,7 @@ void UArmy::DeleteArmyUnits(FString ArmyID)
 
     //Build SQL Statements
     DeleteArmyUnitsStmt = new FSQLitePreparedStatement();
-    FString DeleteArmyUnitsSQL = FString::Printf(TEXT("DELETE FROM ArmyUnit WHERE ArmyId='%s'"), *ArmyID);
+    FString DeleteArmyUnitsSQL = FString::Printf(TEXT("DELETE FROM ArmyUnitInfo WHERE ArmyId='%d'"), ArmyID);
     DeleteArmyUnitsStmt->Create(*FoBDB, *DeleteArmyUnitsSQL, ESQLitePreparedStatementFlags::Persistent);
 
     //Delete the Army

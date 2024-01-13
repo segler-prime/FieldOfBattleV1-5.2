@@ -14,55 +14,67 @@ struct FIELDOFBATTLE_API FArmyUnitInfoStruct
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitId;
+	int32 UnitId = 0;
 
 	UPROPERTY(BlueprintReadWrite)
 	FString UnitName;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString MoveStat;
+	FString Move;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString FightStat;
+	FString ShootAttacks;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ShootStat;
+	FString ShootRange;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString AttacksStat;
+	FString ShootSkill;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ToughnessStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString WoundsStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString StrengthStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString BraveryStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString InitiativeStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	FString UnitStrengthStat;
-
-	UPROPERTY(BlueprintReadWrite)
-	int32 BaseCostStat = 0;
-
-	UPROPERTY(BlueprintReadWrite)
-	int32 UnitSpacingStat = 0;
+	FString ShootStrength;
 	
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitWidthStat = 0;
+	FString FightAttacks;
 	
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitSizeStat = 0;
+	FString FightSkill;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString FightStrength;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString Toughness;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString ArmorSave;
 	
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitDamageStat = 0;
+	FString Wounds;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString Bravery;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString Initiative;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString UnitStrength;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 BaseCost = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	int32 UnitSpacing = 0;
+	
+	UPROPERTY(BlueprintReadWrite)
+	int32 UnitWidth = 0;
+	
+	UPROPERTY(BlueprintReadWrite)
+	int32 UnitSize = 0;
+	
+	UPROPERTY(BlueprintReadWrite)
+	int32 UnitDamage = 0;
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 UnitTeam = 0;
