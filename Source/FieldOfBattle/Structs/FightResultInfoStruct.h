@@ -14,6 +14,9 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite)
+	AActor* Attacker;
+
+	UPROPERTY(BlueprintReadWrite)
 	int AttackerAttacks = 0;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -36,6 +39,9 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 
 	UPROPERTY(BlueprintReadWrite)
 	int AttackerFightTotal = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	AActor* CounterAttacker;
 
 	UPROPERTY(BlueprintReadWrite)
 	int CounterAttackerAttacks = 0;
@@ -69,5 +75,8 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 
 	UPROPERTY(BlueprintReadWrite)
 	int BraveryCheckRoll = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString FleeingUnit;
 
 };
