@@ -20,6 +20,15 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 	AActor* Attacker;
 
 	UPROPERTY(BlueprintReadWrite)
+	FString AttackerUnitName;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString AttackerBravery;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FString AttackerInitiative;	
+	
+	UPROPERTY(BlueprintReadWrite)
 	int AttackerAttacks = 0;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -49,6 +58,15 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 	UPROPERTY(BlueprintReadWrite)
 	AActor* CounterAttacker;
 
+	UPROPERTY(BlueprintReadWrite)
+	FString CounterAttackerUnitName;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString CounterAttackerBravery;
+	
+	UPROPERTY(BlueprintReadWrite)
+	FString CounterAttackerInitiative;
+		
 	UPROPERTY(BlueprintReadWrite)
 	int CounterAttackerAttacks = 0;
 
@@ -87,5 +105,11 @@ struct FIELDOFBATTLE_API FFightResultInfoStruct
 
 	UPROPERTY(BlueprintReadWrite)
 	FString FleeingUnit;
+
+	UPROPERTY(BlueprintReadWrite)
+	int FleeDistance = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	int ChaseDistance = 0;
 
 };
