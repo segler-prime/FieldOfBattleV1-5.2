@@ -19,7 +19,7 @@ void ALobbyGameModeBase::StartGame(FString Map)
     
     UFoBGameInstance* FoBGameInstancePtr = Cast<UFoBGameInstance>(GetGameInstance());
     FoBGameInstancePtr->SavePlayersInfo(PlayersInfo);
-
+ 
     UWorld* World = GetWorld();
     bUseSeamlessTravel = true;
     
