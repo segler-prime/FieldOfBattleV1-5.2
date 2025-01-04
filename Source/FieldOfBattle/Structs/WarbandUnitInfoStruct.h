@@ -17,6 +17,9 @@ struct FIELDOFBATTLE_API FWarbandUnitInfoStruct
 	FString UnitName;
 
 	UPROPERTY(BlueprintReadWrite)
+	FString UnitClass;
+
+	UPROPERTY(BlueprintReadWrite)
 	FString Move;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -44,7 +47,7 @@ struct FIELDOFBATTLE_API FWarbandUnitInfoStruct
 	FString Toughness;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ArmorSave;
+	FString Armor;
 
 	UPROPERTY(BlueprintReadWrite)
 	FString Wounds;
@@ -65,5 +68,5 @@ struct FIELDOFBATTLE_API FWarbandUnitInfoStruct
 	int32 UnitSpacing = 0;
 
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitWidth = 0;
+	int32 UnitRankWidth = 0;
 };

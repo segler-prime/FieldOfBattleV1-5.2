@@ -16,8 +16,8 @@
     void USession::StartButtonClicked(FString Map)
     {
         //UE_LOG(LogTemp, Warning, TEXT("Menu-StartButtonClicked: Starting"));
-        ALobbyGameModeBase* LobbyGameMode = Cast<ALobbyGameModeBase>(UGameplayStatics::GetGameMode(this));  
-        LobbyGameMode->StartGame(Map);
+        ALobbyGameModeBase* LobbyGameModeBase = Cast<ALobbyGameModeBase>(UGameplayStatics::GetGameMode(this));  
+        LobbyGameModeBase->StartGame(Map);
     }
 
     void USession::JoinButtonClicked()

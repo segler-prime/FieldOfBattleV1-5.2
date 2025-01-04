@@ -5,6 +5,7 @@
 #include "OnlineSubsystem.h"
 #include "Session.h"
 #include "OnlineSessionSettings.h"
+#include "Online/OnlineSessionNames.h"
 
 const static FName BATTLE_NAME_KEY = TEXT("CBattleName");
 const static FName BATTLE_MAP_KEY = TEXT("CBattleMap");
@@ -140,9 +141,7 @@ void UFoBGameInstance::OnFindSessionsComplete(bool bWasSuccessful)
             SessionIndex = SessionIndex + 1;  
        }
         
-        JoinMenu->AddSessionToListview(TEXT("Millys Big Battle"), TEXT("MillyB"), 11);
-        JoinMenu->AddSessionToListview(TEXT("Last Man Standing Deathmatch"), TEXT("ToeBasher"), 12);
-        JoinMenu->AddSessionToListview(TEXT("For the Queen..."), TEXT("Crumpet"), 13);  
+        JoinMenu->AddSessionToListview(TEXT("Place Holder Battle"), TEXT("Test User"), 11);
     }
 }
 

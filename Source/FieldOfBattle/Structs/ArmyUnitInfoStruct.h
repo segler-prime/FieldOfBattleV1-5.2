@@ -20,6 +20,12 @@ struct FIELDOFBATTLE_API FArmyUnitInfoStruct
 	FString UnitName;
 
 	UPROPERTY(BlueprintReadWrite)
+	FString UnitNickname;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString UnitClass;
+
+	UPROPERTY(BlueprintReadWrite)
 	FString Move;
 
 	UPROPERTY(BlueprintReadWrite)
@@ -47,7 +53,7 @@ struct FIELDOFBATTLE_API FArmyUnitInfoStruct
 	FString Toughness;
 
 	UPROPERTY(BlueprintReadWrite)
-	FString ArmorSave;
+	FString Armor;
 	
 	UPROPERTY(BlueprintReadWrite)
 	FString Wounds;
@@ -62,19 +68,43 @@ struct FIELDOFBATTLE_API FArmyUnitInfoStruct
 	FString UnitStrength;
 
 	UPROPERTY(BlueprintReadWrite)
+	bool Fast = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Durable = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Loyal = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Longbows = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Volley = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Agressive = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Strong = false;
+
+	UPROPERTY(BlueprintReadWrite)
+	bool Shields = false;
+
+	UPROPERTY(BlueprintReadWrite)
 	int32 BaseCost = 0;
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 UnitSpacing = 0;
 	
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitWidth = 0;
+	int32 UnitRankWidth = 0;
 	
 	UPROPERTY(BlueprintReadWrite)
 	int32 UnitSize = 0;
 	
 	UPROPERTY(BlueprintReadWrite)
-	int32 UnitDamage = 0;
+	int32 UnitHealth = 0;
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 UnitTeam = 0;
