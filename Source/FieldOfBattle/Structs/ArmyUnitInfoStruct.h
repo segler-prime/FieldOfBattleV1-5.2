@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Structs/ArmyHeaderInfoStruct.h"
 #include "ArmyUnitInfoStruct.generated.h"
 
 /**
@@ -15,6 +16,9 @@ struct FIELDOFBATTLE_API FArmyUnitInfoStruct
 
 	UPROPERTY(BlueprintReadWrite)
 	int32 UnitId = 0;
+
+	UPROPERTY(BlueprintReadWrite)
+	FString ArmyName;
 
 	UPROPERTY(BlueprintReadWrite)
 	FString UnitName;
